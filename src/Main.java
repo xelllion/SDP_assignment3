@@ -11,7 +11,7 @@ public class Main {
 
     private static void runDemo() {
         int passed = 0;
-        int total = 5;
+        int total = 7;
 
         Renderer vector = new VectorRenderer();
         Renderer raster = new RasterRenderer();
@@ -50,6 +50,32 @@ public class Main {
         );
 
         passed += checkRuntimeSwitch();
+
+        Circle circleAscii = new Circle(
+                "C3",
+                new AsciiRenderer(),
+                2
+        );
+
+        Square squareAscii = new Square(
+                "S3",
+                new AsciiRenderer(),
+                3
+        );
+
+        passed += check(
+                "T6",
+                "Circle + AsciiRenderer",
+                circleAscii.execute(),
+                "ASCII circle radius=2"
+        );
+
+        passed += check(
+                "T7",
+                "Square + AsciiRenderer",
+                squareAscii.execute(),
+                "ASCII square side=3"
+        );
 
         System.out.println("SUMMARY: " + passed + "/" + total + " PASS");
     }
